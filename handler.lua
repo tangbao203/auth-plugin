@@ -39,10 +39,10 @@ function TestAuthHandler:access(config)
     -- 在这里实现自定义的逻辑
     print("\n===access AuthHandler======")
     print("\n=====当前配置config, max_request_count:",config.max_request_count," ,time_interval:",config.time_interval)
-    local url=authorityUrl.."token=test-token";
+    local url=authorityUrl.."?token=test-token";
     local resp, code = http_post_client(url,3000)
-    if code ~= 200 or resp.body ~="true" then
-        print("\n kong请求url:",url," 返回结果:",resp.body);
+    if code ~= nil or resp.body ~="true" then
+        print("\n kong请求url:",url," code:",code,"   返回结果:",resp.body);
         kong.response.exit(401, "无权访问", { ["Content-Type"] = "application/json;charset=UTF-8" } )
     end
     print("\n===授权请求结果,err:",code," resp:",resp.body)
