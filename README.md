@@ -2,6 +2,7 @@
 
 
 ## kong 插件目录结构
+```
 custom-plugin 
 ├── api.lua 
 ├── daos.lua 
@@ -10,7 +11,7 @@ custom-plugin
 │ ├── cassandra.lua
 │ └── postgres.lua
 └── schema.lua # (必需)插件配置参数定义, 可加入自定义校验函数
-
+```
 
 ## kong 插件的生命周期
 ```lua
